@@ -24,6 +24,7 @@ function renderMeme() {
         gCtx.textBaseline = 'middle'
 
         drawText(meme.lines[0].txt, gElCanvas.width / 2, 40)
+        drawText(meme.lines[1].txt, gElCanvas.width / 2, gElCanvas.height - 40)
     })
 }
 
