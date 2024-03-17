@@ -39,6 +39,11 @@ function onChangeColor(val) {
     renderMeme()
 }
 
+function onChangeFontSize(dir) {
+    setFontSize(dir)
+    renderMeme()
+}
+
 function onDownload() {
     const dataUrl = gElCanvas.toDataURL()
     const elLink = document.querySelector('a.download')

@@ -29,6 +29,10 @@ function setLineColor(color, lineIdx = 0) {
     gMeme.lines[lineIdx].color = color
 }
 
+function setFontSize(dir) {
+    gMeme.lines.forEach(line => line.size += dir * 5)
+}
+
 function setImg(id) {
     gMeme.selectedImgId = id
 }
