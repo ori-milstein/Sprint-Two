@@ -56,6 +56,11 @@ canvas {
     height: 200px;
 }
 
+button {
+    display: inline;
+    max-width: max-content;
+}
+
 .hidden {
     display: none;
 }

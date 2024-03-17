@@ -23,17 +23,17 @@
                 <div class="canvas-container">
                     <canvas width="400px" height="400px"></canvas>
                 </div>
-                <form action="">
+                <form action="" onsubmit="return false">
                     <label>
                         Enter text: <input type="text" name="firstLine" oninput="onChangeTxt(this.value)">
                     </label>
                     <label>
                         Choose color: <input type="color" oninput="onChangeColor(this.value)">
                     </label>
-
+                    <button type="button" onclick="onChangeFontSize(1)" class="fontSize">A+</button>
+                    <button type="button" onclick="onChangeFontSize(-1)" class="fontSize">A-</button>
                 </form>
-                <button onclick="onChangeFontSize(1)" class="fontSize">A+</button>
-                <button onclick="onChangeFontSize(-1)" class="fontSize">A-</button>
+
                 <a href="#" class="download"><button onclick="onDownload()">Download</button></a>
             </section>
         </div>
