@@ -4,8 +4,13 @@ var gElCanvas
 var gCtx
 
 function onInit() {
-    initCanvas()
+    initMeme()
     initGallery()
+}
+
+function initMeme() {
+    initCanvas()
+    initInputs()
 }
 
 function initCanvas() {
@@ -20,6 +25,13 @@ function initCanvas() {
     // setLineTxt(document.querySelector('[name="firstLine"]').value)
 
     renderMeme()
+}
+
+function initInputs() {
+    const elTxtInput = document.querySelector('input[type="text"]')
+    const firstLineTxt = getMeme().lines[0].txt
+
+    elTxtInput.value = firstLineTxt
 }
 
 function onDraw(ev) {

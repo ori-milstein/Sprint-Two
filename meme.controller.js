@@ -45,6 +45,20 @@ function onChangeFontSize(dir) {
     renderMeme()
 }
 
+function onAddLine() {
+    console.log('high')
+}
+
+function onSwitchLine(idx) {
+    const newLineIdx = switchLine(idx)
+    const elTxtInput = document.querySelector('input[type="text"]')
+    const newLineTxt = getMeme().lines[newLineIdx].txt
+
+    elTxtInput.value = newLineTxt
+    // setLineTxt(lineIdx)
+    renderMeme()
+}
+
 function onDownload() {
     const dataUrl = gElCanvas.toDataURL()
     const elLink = document.querySelector('a.download')

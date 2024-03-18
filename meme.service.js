@@ -23,7 +23,22 @@ function getImgs() {
 }
 
 function setLineTxt(txt, lineIdx = 0) {
-    gMeme.lines[lineIdx].txt = txt
+    const { selectedLineIdx, lines } = gMeme
+
+    // if (selectedLineIdx !== lineIdx) gMeme.selectedLineIdx = lineIdx
+    lines[selectedLineIdx].txt = txt
+}
+
+function switchLine(idx) {
+    console.log('idx', idx)
+    var { selectedLineIdx, lines } = gMeme
+    console.log('selectedLineIdx', selectedLineIdx)
+    console.log('lines.length', lines.length)
+
+    gMeme.selectedLineIdx = (idx === undefined) ? (selectedLineIdx === lines.length - 1) ? 0 : ++gMeme.selectedLineIdx : idx
+
+    console.log('selectedLineIdx', gMeme.selectedLineIdx)
+    return gMeme.selectedLineIdx
 }
 
 function setLineColor(color, lineIdx = 0) {
