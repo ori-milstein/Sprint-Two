@@ -27,7 +27,8 @@ function renderMeme(isLineNew = false, isInit = false) {
         gCtx.textBaseline = 'middle'
 
         renderText(isLineNew)
-        renderRects()
+        // renderRects()
+        renderRect(meme.selectedLineIdx)
     })
 }
 function renderText(isLineNew = false) {
@@ -59,6 +60,12 @@ function renderRects() {
     getMeme().lines.forEach((line, idx) => {
         drawRectAround(positions[idx], idx)
     })
+}
+
+function renderRect(idx) {
+
+    drawRectAround(positions[idx], idx)
+
 }
 
 function drawRectAround(pos, idx) {
