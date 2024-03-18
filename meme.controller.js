@@ -1,4 +1,4 @@
-'uses strict'
+'use strict'
 
 var positions
 
@@ -20,7 +20,10 @@ function renderMeme(isLineNew = false, isInit = false) {
         // gElCanvas.width = img.width
         // gElCanvas.height = img.height
         coverCanvasWithImg(img)
-        if (isInit) positions = [{ x: gElCanvas.width / 2, y: 40 }, { x: gElCanvas.width / 2, y: gElCanvas.height - 40 }]
+        if (isInit) {
+            positions = [{ x: gElCanvas.width / 2, y: 40 }, { x: gElCanvas.width / 2, y: gElCanvas.height - 40 }]
+            positions.forEach((pos, idx) => updatePosition(pos, idx))
+        }
         gCtx.font = `${meme.lines[0].size}px arial`
         gCtx.fillStyle = meme.lines[0].color
         gCtx.textAlign = 'center'
@@ -81,6 +84,22 @@ function drawRectAround(pos, idx) {
     // gCtx.closePath()
 }
 
+function onMouseMove(ev) {
+    // ?const { offsetX, offsetY, pageX, pagetY } = ev
+    const { offsetX, offsetY, clientX, clientY } = ev
+
+    // :TODO - find the hovered star
+
+    const line = positions.find(pos => {
+        var { x, y, rate } = line
+
+        return (offsetX >= x && offsetX <= x + BAR_WIDTH &&
+            offsetY >= y && offsetY <= y + rate)
+    })
+
+
+}
+
 function onChangeTxt(val) {
     // setLineTxt(document.querySelector('[name="firstLine"]').value)
     setLineTxt(val)
@@ -101,6 +120,7 @@ function onAddLine() {
     const isLineNew = true
     positions.push({ x: gElCanvas.width / 2, y: gElCanvas.height / 2 })
     addLine()
+    updatePosition(positions[positions.length - 1], positions.length - 1)
     renderMeme(isLineNew)
 }
 

@@ -18,6 +18,10 @@ function getMeme() {
     return gMeme
 }
 
+function updatePosition(pos, idx) {
+    gMeme.lines[idx].pos = pos
+}
+
 function addLine() {
     gMeme.lines.push({ txt: 'Enter Text Here', size: 20, color: 'red' })
     gMeme.selectedLineIdx = gMeme.lines.length - 1
