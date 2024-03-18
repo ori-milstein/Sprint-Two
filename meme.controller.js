@@ -84,20 +84,24 @@ function drawRectAround(pos, idx) {
     // gCtx.closePath()
 }
 
-function onMouseMove(ev) {
+function onRectClick(ev) {
     // ?const { offsetX, offsetY, pageX, pagetY } = ev
     const { offsetX, offsetY, clientX, clientY } = ev
-
     // :TODO - find the hovered star
 
-    const line = positions.find(pos => {
-        var { x, y, rate } = line
+    const line = getMeme().lines.find(line => {
+        var { x, y } = line.pos
+        const textMetrics = gCtx.measureText(line.txt)
+        const width = textMetrics.width
+        const height = textMetrics.actualBoundingBoxAscent
+        const rectX = line.pos.x - width / 2 - 10
+        const rectY = line.pos.y - height - 10
 
-        return (offsetX >= x && offsetX <= x + BAR_WIDTH &&
-            offsetY >= y && offsetY <= y + rate)
+        return (offsetX >= rectX && offsetX <= rectX + width + 20 &&
+            offsetY >= rectY && offsetY <= rectY + height * 2 + 20)
     })
 
-
+    onSwitchLine(getMeme().lines.indexOf(line))
 }
 
 function onChangeTxt(val) {
