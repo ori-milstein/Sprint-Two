@@ -18,6 +18,11 @@ function getMeme() {
     return gMeme
 }
 
+function addLine() {
+    gMeme.lines.push({ txt: 'Enter Text Here', size: 20, color: 'red' })
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+}
+
 function getImgs() {
     return gImgs
 }

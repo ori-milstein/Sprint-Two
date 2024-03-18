@@ -1,6 +1,6 @@
 'uses strict'
 
-function renderMeme() {
+function renderMeme(isLineNew = false) {
     const gallery = document.querySelector('.gallery')
     const editor = document.querySelector('.editor')
 
@@ -23,11 +23,18 @@ function renderMeme() {
         gCtx.textAlign = 'center'
         gCtx.textBaseline = 'middle'
 
-        drawText(meme.lines[0].txt, gElCanvas.width / 2, 40)
-        drawText(meme.lines[1].txt, gElCanvas.width / 2, gElCanvas.height - 40)
+        renderText(isLineNew)
     })
 }
+function renderText(isLineNew = false) {
+    const [firstLine, secondLine, ...rest] = getMeme().lines
 
+    drawText(firstLine.txt, gElCanvas.width / 2, 40)
+    drawText(secondLine.txt, gElCanvas.width / 2, gElCanvas.height - 40)
+    rest.forEach(line => drawText(line.txt, gElCanvas.width / 2, gElCanvas.width / 2))
+
+    if (isLineNew) onSwitchLine(getMeme().selectedLineIdx, true)
+}
 function onChangeTxt(val) {
     // setLineTxt(document.querySelector('[name="firstLine"]').value)
     setLineTxt(val)
@@ -46,16 +53,21 @@ function onChangeFontSize(dir) {
 }
 
 function onAddLine() {
-    console.log('high')
+    const isLineNew = true
+
+    addLine()
+    renderMeme(isLineNew)
 }
 
-function onSwitchLine(idx) {
+function onSwitchLine(idx, isLineNew = false) {
+
     const newLineIdx = switchLine(idx)
     const elTxtInput = document.querySelector('input[type="text"]')
     const newLineTxt = getMeme().lines[newLineIdx].txt
 
     elTxtInput.value = newLineTxt
     // setLineTxt(lineIdx)
+    if (isLineNew) return
     renderMeme()
 }
 
