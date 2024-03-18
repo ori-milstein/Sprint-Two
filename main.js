@@ -6,6 +6,7 @@ var gCtx
 function onInit() {
     initMeme()
     initGallery()
+    renderMeme(false, true)
 }
 
 function initMeme() {
@@ -24,7 +25,7 @@ function initCanvas() {
     })
     // setLineTxt(document.querySelector('[name="firstLine"]').value)
 
-    renderMeme()
+
 }
 
 function initInputs() {
@@ -54,9 +55,24 @@ function onDraw(ev) {
 }
 
 function drawText(text, x, y) {
+    gCtx.strokeStyle = 'black'
+    gCtx.fillStyle = 'red'
+    gCtx.beginPath()
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
+    gCtx.closePath()
 }
+
+function drawRect(x, y, width, height) {
+    const oldSyle = gCtx.strokeStyle
+    gCtx.strokeStyle = 'lightblack'
+    gCtx.lineWidth = 2
+    gCtx.beginPath()
+    gCtx.strokeRect(x, y, width, height)
+    gCtx.closePath()
+    // gCtx.strokeStyle = oldSyle
+}
+
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
