@@ -94,14 +94,32 @@ function onRectClick(ev) {
         const textMetrics = gCtx.measureText(line.txt)
         const width = textMetrics.width
         const height = textMetrics.actualBoundingBoxAscent
+<<<<<<< HEAD
         const rectX = x - width / 2 - 10
         const rectY = y - height - 10
+=======
+<<<<<<< HEAD
+        const rectX = x - width / 2 - 10
+        const rectY = y - height - 10
+=======
+        const rectX = line.pos.x - width / 2 - 10
+        const rectY = line.pos.y - height - 10
+>>>>>>> faa694be4a018bfc86a4d932920aa6a958d0ca6a
+>>>>>>> e7ff6d0c329243ae73195b6bf287bce89565883f
 
         return (offsetX >= rectX && offsetX <= rectX + width + 20 &&
             offsetY >= rectY && offsetY <= rectY + height * 2 + 20)
     })
 
+<<<<<<< HEAD
     if (line) onSwitchLine(getMeme().lines.indexOf(line))
+=======
+<<<<<<< HEAD
+    if (line) onSwitchLine(getMeme().lines.indexOf(line))
+=======
+    onSwitchLine(getMeme().lines.indexOf(line))
+>>>>>>> faa694be4a018bfc86a4d932920aa6a958d0ca6a
+>>>>>>> e7ff6d0c329243ae73195b6bf287bce89565883f
 }
 
 function onChangeTxt(val) {
